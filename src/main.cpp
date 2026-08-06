@@ -5,7 +5,7 @@ int main()
     const int screenWidth = 900;
     const int screenHeight = 600;
 
-    InitWindow(screenWidth, screenHeight, "raylib Test auf dem MacBook");
+    InitWindow(screenWidth, screenHeight, "Test Window");
 
     SetTargetFPS(60);
 
