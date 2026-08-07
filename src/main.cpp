@@ -1,4 +1,7 @@
 #include "raylib.h"
+#include "stab.h"
+#include "player.h"
+#include "gameplay.h"
 
 int main()
 {
@@ -14,7 +17,6 @@ int main()
         BeginDrawing();
 
         ClearBackground(DARKBLUE);
-        DrawText("raylib funktioniert auf dem M2 Pro!", 180, 280, 30, WHITE);
 
         EndDrawing();
     }
