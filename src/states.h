@@ -15,3 +15,4 @@ enum class WinLooe{
 
 void UpdateChoicePaperRock();
 void DrawChoicePaperRock();
+void DrawChoicePaperPaper();
