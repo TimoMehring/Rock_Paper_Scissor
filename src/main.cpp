@@ -20,7 +20,7 @@ int main()
         BeginDrawing();
 
         ClearBackground(DARKBLUE);
-
+        
         CheckResult(rpsP1,rpsP2);
 
         EndDrawing();

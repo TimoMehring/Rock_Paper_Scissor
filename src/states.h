@@ -13,7 +13,16 @@ enum class WinLooe{
   Win,
   Lose,
 };
-
+//P1 Win
 void UpdateChoicePaperRock();
-void DrawChoicePaperRock();
+void DrawChoicePaperRock(); 
+void DrawChoiceRockScissor();
+void DrawChoiceScissorPaper();
+// P1 Draw P2
 void DrawChoicePaperPaper();
+void DrawChoiceRockRock();
+void DrawChoiceScissorScissor();
+//P2 Win
+void DrawChoiceRockPaper();
+void DrawChoiceScissorRock();
+void DrawChoicePaperScissor();
