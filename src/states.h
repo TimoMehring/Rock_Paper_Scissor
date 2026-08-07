@@ -4,6 +4,7 @@
 enum class States{
   Startscreen,
   Choice_Rock_Paper_Scissor,
+  ResultPending
   
 
 };

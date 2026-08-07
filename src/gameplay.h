@@ -1,5 +1,6 @@
 #pragma once
 #include "raylib.h"
+#include "states.h"
 
 enum class RPSP1{
     Rock,
@@ -12,3 +13,5 @@ enum class RPSP2{
     Paper,
     Scissor
 };
+
+void CheckResult(RPSP1 rsp1, RPSP2 rsp2);
