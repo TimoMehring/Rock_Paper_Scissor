@@ -7,3 +7,11 @@ enum class States{
   
 
 };
+
+enum class WinLooe{
+  Win,
+  Lose,
+};
+
+void UpdateChoicePaperRock();
+void DrawChoicePaperRock();

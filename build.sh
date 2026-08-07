@@ -6,6 +6,7 @@ mkdir -p build
 
 clang++ -std=c++17 \
 src/main.cpp \
+src/states.cpp \
 -o build/app \
 -I/opt/homebrew/include \
 -L/opt/homebrew/lib \
