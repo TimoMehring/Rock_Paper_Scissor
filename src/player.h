@@ -19,4 +19,7 @@ struct PlayerRedRpsPosition{
     Vector2 rockPosPlayerRed{254.0f,20.0f};
     Vector2 paperPosPlayerRed{398.0f, 20.0f};
     Vector2 scissorPosPlayerRed{542.0f, 20.0f};
+    bool rockSelected = false;
+    bool paperSelected = false;
+    bool scissorSelected = false;
 };

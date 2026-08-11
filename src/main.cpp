@@ -27,7 +27,12 @@ int main()
     while (!WindowShouldClose())
     {
         UpdatePlayerBlueChoice(rpsP2, graphics,playerBluePos, currentPhase);
-
+        if(currentPhase == RpsPhase::PlayerRedAI){
+            UpdatePlayerRedAI(rpsP1, playerRedPos, currentPhase);
+        }
+        if(currentPhase == RpsPhase::MovePlayerRed){
+            UpdatePlayerRedMovement(playerRedPos, currentPhase);
+        }
         BeginDrawing();
 
         ClearBackground(DARKBLUE);

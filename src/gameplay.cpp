@@ -87,18 +87,108 @@ void UpdatePlayerBlueChoice(RPSP2 &rspP2, Graphics &graphics, PlayerBlueRpsPosit
         }
     }
 
-    if (currentPhase == RpsPhase::MovePlayerBlue){
-        if (playerBluePos.rockSelected){
+    if (currentPhase == RpsPhase::MovePlayerBlue)
+    {
+        if (playerBluePos.rockSelected)
+        {
             Vector2 targetPosition = {398.0f, 300.0f};
             playerBluePos.rockPosPlayerBlue.y += (targetPosition.y - playerBluePos.rockPosPlayerBlue.y) * 0.05f;
+            if (playerBluePos.rockPosPlayerBlue.y <= 301.0f)
+            {
+                currentPhase = RpsPhase::PlayerRedAI;
+            }
         }
-        else if (playerBluePos.paperSelected){
+        else if (playerBluePos.paperSelected)
+        {
             Vector2 targetPosition = {398.0f, 300.0f};
             playerBluePos.paperPosPlayerBlue.y += (targetPosition.y - playerBluePos.paperPosPlayerBlue.y) * 0.05f;
+            if (playerBluePos.paperPosPlayerBlue.y <= 301.0f)
+            {
+                currentPhase = RpsPhase::PlayerRedAI;
+            }
         }
-        else if (playerBluePos.scissorSelected){
+        else if (playerBluePos.scissorSelected)
+        {
             Vector2 targetPosition = {398.0f, 300.0f};
             playerBluePos.scissorPosPlayerBlue.y += (targetPosition.y - playerBluePos.scissorPosPlayerBlue.y) * 0.05f;
+            if (playerBluePos.scissorPosPlayerBlue.y <= 301.0f)
+            {
+                currentPhase = RpsPhase::PlayerRedAI;
+            }
         }
     }
+}
+
+RPSP1 ChoosePlayerRedAI()
+{
+    int randomChoice = GetRandomValue(0, 2);
+
+    if (randomChoice == 0)
+    {
+        return RPSP1::Rock;
+    }
+    else if (randomChoice == 1)
+    {
+        return RPSP1::Paper;
+    }
+    else if (randomChoice == 2)
+    {
+        return RPSP1::Scissor;
+    }
+}
+
+void UpdatePlayerRedAI(RPSP1 &rpsP1, PlayerRedRpsPosition &playerRedPos, RpsPhase &currentPhase)
+{
+    rpsP1 = ChoosePlayerRedAI();
+
+    if (rpsP1 == RPSP1::Rock){
+        playerRedPos.rockSelected = true;
+        playerRedPos.paperSelected = false;
+        playerRedPos.scissorSelected = false;
+    }
+    else if (rpsP1 == RPSP1::Paper){
+        playerRedPos.rockSelected = false;
+        playerRedPos.paperSelected = true;
+        playerRedPos.scissorSelected = false;
+    }
+    else if (rpsP1 == RPSP1::Scissor){
+        playerRedPos.rockSelected = false;
+        playerRedPos.paperSelected = false;
+        playerRedPos.scissorSelected = true;
+    }
+
+    currentPhase = RpsPhase::MovePlayerRed;
+}
+
+void UpdatePlayerRedMovement(PlayerRedRpsPosition& playerRedPos,RpsPhase& currentPhase){
+    if (currentPhase == RpsPhase::MovePlayerRed)
+    {
+        if (playerRedPos.rockSelected){
+            Vector2 targetPosition = {398.0f, 300.0f};
+            playerRedPos.rockPosPlayerRed.y += (targetPosition.y - playerRedPos.rockPosPlayerRed.y) * 0.05f;
+            if (playerRedPos.rockPosPlayerRed.y >= 199.0f)
+            {
+                currentPhase = RpsPhase::ShowResult;
+            }
+        }
+        else if (playerRedPos.paperSelected){
+            Vector2 targetPosition = {398.0f, 300.0f};
+            playerRedPos.paperPosPlayerRed.y += (targetPosition.y - playerRedPos.paperPosPlayerRed.y) * 0.05f;
+
+            if (playerRedPos.paperPosPlayerRed.y >= 199.0f)
+            {
+                currentPhase = RpsPhase::ShowResult;
+            }
+        }
+        else if (playerRedPos.scissorSelected){
+            Vector2 targetPosition = {398.0f, 300.0f};
+            playerRedPos.scissorPosPlayerRed.y += (targetPosition.y - playerRedPos.scissorPosPlayerRed.y) * 0.05f;
+
+            if (playerRedPos.scissorPosPlayerRed.y >= 199.0f)
+            {
+                currentPhase = RpsPhase::ShowResult;
+            }
+        }
+    }
+
 }

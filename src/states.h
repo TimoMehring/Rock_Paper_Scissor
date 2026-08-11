@@ -14,7 +14,9 @@ enum class RpsPhase
     PlayerBlueChoice,
     MovePlayerBlue,
     PlayerRedAI,
+    MovePlayerRed,
     ShowResult
+
 };
 
 enum class WinLose{
