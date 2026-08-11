@@ -22,9 +22,11 @@ int main()
     PlayerRedRpsPosition playerRedPos;
     PlayerBlueRpsPosition playerBluePos;
 
+    RpsPhase currentPhase = RpsPhase::PlayerBlueChoice;
+
     while (!WindowShouldClose())
     {
-        UpdatePlayerBlueChoice(rpsP2, graphics,playerBluePos);
+        UpdatePlayerBlueChoice(rpsP2, graphics,playerBluePos, currentPhase);
 
         BeginDrawing();
 

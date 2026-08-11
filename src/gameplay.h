@@ -16,4 +16,4 @@ enum class RPSP2{
 };
 
 void CheckResult(RPSP1 rsp1, RPSP2 rsp2);
-void UpdatePlayerBlueChoice(RPSP2& rspP2,Graphics& graphics,PlayerBlueRpsPosition& playerBluePos);
+void UpdatePlayerBlueChoice(RPSP2& rspP2,Graphics& graphics,PlayerBlueRpsPosition& playerBluePos,RpsPhase& currentPhase);

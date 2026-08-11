@@ -9,7 +9,15 @@ enum class States{
 
 };
 
-enum class WinLooe{
+enum class RpsPhase
+{
+    PlayerBlueChoice,
+    MovePlayerBlue,
+    PlayerRedAI,
+    ShowResult
+};
+
+enum class WinLose{
   Win,
   Lose,
 };
