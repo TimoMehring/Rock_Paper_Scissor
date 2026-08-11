@@ -1,0 +1,16 @@
+# Kompilierte Dateien und Build-Ordner ignorieren
+build/
+release/
+*.exe
+*.o
+
+# macOS-Systemdateien ignorieren
+.DS_Store
+
+# Lokale VS-Code-Einstellungen ignorieren
+.vscode/
+
+# Lokale Git-Shortcuts
+github_basic_guide.md
+github_branch_merge_guide.md
+github_clone_guide.md
