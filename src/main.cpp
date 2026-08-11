@@ -17,18 +17,20 @@ int main()
     SetTargetFPS(60);
 
     Graphics graphics = LoadGraphics();
+    States currentState = States::Choice_Rock_Paper_Scissor;
 
     while (!WindowShouldClose())
     {
         BeginDrawing();
 
         ClearBackground(DARKBLUE);
-        DrawTexture(graphics.rock, 300, 300, WHITE); // Test
+        DrawGraphics(graphics,currentState);
         
-        CheckResult(rpsP1,rpsP2);
+        //CheckResult(rpsP1,rpsP2); //paused for "DrawGraphics" tests
 
         EndDrawing();
     }
+    UnloadGraphics(graphics);
 
     CloseWindow();
 
