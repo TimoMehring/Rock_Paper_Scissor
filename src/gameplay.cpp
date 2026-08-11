@@ -1,5 +1,6 @@
 #include "gameplay.h"
 #include "raylib.h"
+#include "player.h"
 
 void CheckResult(RPSP1 rpsP1, RPSP2 rpsP2)
 {
@@ -123,16 +124,13 @@ RPSP1 ChoosePlayerRedAI()
 {
     int randomChoice = GetRandomValue(0, 2);
 
-    if (randomChoice == 0)
-    {
+    if (randomChoice == 0){
         return RPSP1::Rock;
     }
-    else if (randomChoice == 1)
-    {
+    else if (randomChoice == 1){
         return RPSP1::Paper;
     }
-    else if (randomChoice == 2)
-    {
+    else{
         return RPSP1::Scissor;
     }
 }
@@ -157,7 +155,12 @@ void UpdatePlayerRedAI(RPSP1 &rpsP1, PlayerRedRpsPosition &playerRedPos, RpsPhas
         playerRedPos.scissorSelected = true;
     }
 
-    currentPhase = RpsPhase::MovePlayerRed;
+    currentPhase = RpsPhase::TurnRpsIntoOne;
+}
+
+void UpdateTurnPlayerRedIntoBack(PlayerRedRpsPosition& playerRedPos, RpsPhase& currentPhase){
+    playerRedPos.rockPosPlayerRed.x += (398.0f - playerRedPos.rockPosPlayerRed.x) * 0.05f;
+    playerRedPos.scissorPosPlayerRed.x += (398.0f - playerRedPos.scissorPosPlayerRed.x) * 0.05f;
 }
 
 void UpdatePlayerRedMovement(PlayerRedRpsPosition& playerRedPos,RpsPhase& currentPhase){

@@ -2,6 +2,7 @@
 #include "raylib.h"
 #include "states.h"
 #include "player.h"
+
 struct Graphics{
     Texture2D rock;
     Texture2D paper;
@@ -10,7 +11,8 @@ struct Graphics{
 };
 
 Graphics LoadGraphics();
-void DrawGraphics(Graphics& graphics, States currentState,PlayerRedRpsPosition& playerRedPos,PlayerBlueRpsPosition playerBluePos);
+void DrawGraphics(Graphics& graphics, States currentState,PlayerRedRpsPosition& playerRedPos,PlayerBlueRpsPosition playerBluePos,RpsPhase currentPhase, RPSP1 rpsP1);
 void UnloadGraphics(Graphics& graphics);
-void DrawPlayerRedGraphics(Graphics& graphics,PlayerRedRpsPosition playerRedPos);
+void DrawPlayerRedGraphics(Graphics& graphics,PlayerRedRpsPosition playerRedPos,RpsPhase currentPhase,RPSP1 rpsP1);
 void DrawPlayerBlueGraphics(Graphics& graphics,PlayerBlueRpsPosition playerBluePos);
+//void DrawPlayerRedGraphics(Graphics& graphics,PlayerRedRpsPosition& playerRedPos,RpsPhase currentPhase,RPSP1 rpsP1);

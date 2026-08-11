@@ -30,13 +30,16 @@ int main()
         if(currentPhase == RpsPhase::PlayerRedAI){
             UpdatePlayerRedAI(rpsP1, playerRedPos, currentPhase);
         }
+        if(currentPhase == RpsPhase::TurnRpsIntoOne){
+            UpdateTurnPlayerRedIntoBack(playerRedPos,currentPhase);
+        }
         if(currentPhase == RpsPhase::MovePlayerRed){
             UpdatePlayerRedMovement(playerRedPos, currentPhase);
         }
         BeginDrawing();
 
         ClearBackground(DARKBLUE);
-        DrawGraphics(graphics,currentState, playerRedPos, playerBluePos);
+        DrawGraphics(graphics,currentState, playerRedPos, playerBluePos, currentPhase, rpsP1);
         
         //CheckResult(rpsP1,rpsP2); //paused for "DrawGraphics" tests
 

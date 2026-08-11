@@ -3,20 +3,9 @@
 #include "states.h"
 #include "graphics.h"
 
-enum class RPSP1{
-    Rock,
-    Paper,
-    Scissor
-};
-
-enum class RPSP2{
-    Rock,
-    Paper,
-    Scissor
-};
-
 void CheckResult(RPSP1 rsp1, RPSP2 rsp2);
 void UpdatePlayerBlueChoice(RPSP2& rspP2,Graphics& graphics,PlayerBlueRpsPosition& playerBluePos,RpsPhase& currentPhase);
 RPSP1 ChoosePlayerRedAI();
 void UpdatePlayerRedAI(RPSP1& rpsp1, PlayerRedRpsPosition& playerRedPos, RpsPhase& currentPhase);
 void UpdatePlayerRedMovement(PlayerRedRpsPosition& playerRedPos,RpsPhase& currentPhase);
+void UpdateTurnPlayerRedIntoBack(PlayerRedRpsPosition& playerRedPos, RpsPhase& currentPhase);
