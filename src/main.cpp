@@ -19,12 +19,17 @@ int main()
     Graphics graphics = LoadGraphics();
     States currentState = States::Choice_Rock_Paper_Scissor;
 
+    PlayerRedRpsPosition playerRedPos;
+    PlayerBlueRpsPosition playerBluePos;
+
     while (!WindowShouldClose())
     {
+        UpdatePlayerBlueChoice(rpsP2, graphics,playerBluePos);
+
         BeginDrawing();
 
         ClearBackground(DARKBLUE);
-        DrawGraphics(graphics,currentState);
+        DrawGraphics(graphics,currentState, playerRedPos, playerBluePos);
         
         //CheckResult(rpsP1,rpsP2); //paused for "DrawGraphics" tests
 
