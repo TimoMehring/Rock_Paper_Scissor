@@ -27,12 +27,12 @@ void UnloadGraphics(Graphics& graphics){
 
 void DrawPlayerRedGraphics(Graphics& graphics,PlayerRedRpsPosition playerRedPos){
     DrawTextureEx(graphics.rock,playerRedPos.rockPosPlayerRed,0.0f, 4.0f, WHITE);
-    DrawTextureEx(graphics.paper,playerRedPos.paperkPosPlayerRed,0.0f, 4.0f, WHITE);
+    DrawTextureEx(graphics.paper,playerRedPos.paperPosPlayerRed,0.0f, 4.0f, WHITE);
     DrawTextureEx(graphics.scissor,playerRedPos.scissorPosPlayerRed,0.0f, 4.0f, WHITE);
 }
 
 void DrawPlayerBlueGraphics(Graphics& graphics,PlayerBlueRpsPosition playerBluePos){
     DrawTextureEx(graphics.rock,playerBluePos.rockPosPlayerBlue,0.0f, 4.0f, WHITE);
-    DrawTextureEx(graphics.paper,playerBluePos.paperkPosPlayerBlue,0.0f, 4.0f, WHITE);
+    DrawTextureEx(graphics.paper,playerBluePos.paperPosPlayerBlue,0.0f, 4.0f, WHITE);
     DrawTextureEx(graphics.scissor,playerBluePos.scissorPosPlayerBlue,0.0f, 4.0f, WHITE);
 }
