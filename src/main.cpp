@@ -24,7 +24,7 @@ int main()
 
     RpsPhase currentPhase = RpsPhase::PlayerBlueChoice;
 
-    float drawTimer = 0.0f;
+    float resultTimer = 0.0f;
 
     while (!WindowShouldClose())
     {
@@ -42,11 +42,27 @@ int main()
             UpdateRevealPlayerRed(currentPhase);
         }
         if(currentPhase == RpsPhase::ShowResult){
-            bool isDraw = ( (rpsP1 == RPSP1::Rock && rpsP2 == RPSP2::Rock) || (rpsP1 == RPSP1::Paper && rpsP2 == RPSP2::Paper) ||  (rpsP1 == RPSP1::Scissor && rpsP2 == RPSP2::Scissor));
+            bool isDraw = ((rpsP1 == RPSP1::Rock && rpsP2 == RPSP2::Rock) || (rpsP1 == RPSP1::Paper && rpsP2 == RPSP2::Paper) ||  (rpsP1 == RPSP1::Scissor && rpsP2 == RPSP2::Scissor));
             if(isDraw){
-                drawTimer += GetFrameTime();
-                if(drawTimer  >= 1.0f){
-                    drawTimer = 0.0f;
+                resultTimer += GetFrameTime();
+                if(resultTimer  >= 1.0f){
+                    resultTimer = 0.0f;
+                    ResetRound(playerBluePos, playerRedPos, currentPhase);
+                }
+            }
+            bool redWins =((rpsP1 == RPSP1::Paper && rpsP2 == RPSP2::Rock) || (rpsP1 == RPSP1::Rock && rpsP2 == RPSP2::Scissor) || (rpsP1 == RPSP1::Scissor && rpsP2 == RPSP2::Paper));
+            if(redWins){
+                resultTimer += GetFrameTime();
+                if(resultTimer  >= 1.0f){
+                    resultTimer = 0.0f;
+                    ResetRound(playerBluePos, playerRedPos, currentPhase);
+                }
+            }
+            bool blueWins =((rpsP1 == RPSP1::Rock && rpsP2 == RPSP2::Paper) || (rpsP1 == RPSP1::Scissor && rpsP2 == RPSP2::Rock) || (rpsP1 == RPSP1::Paper && rpsP2 == RPSP2::Scissor));
+            if(blueWins){
+                resultTimer += GetFrameTime();
+                if(resultTimer  >= 1.0f){
+                    resultTimer = 0.0f;
                     ResetRound(playerBluePos, playerRedPos, currentPhase);
                 }
             }
@@ -55,7 +71,7 @@ int main()
 
         ClearBackground(DARKBLUE);
         DrawPlayground(graphics);
-        //DrawGraphics(graphics,currentState, playerRedPos, playerBluePos, currentPhase, rpsP1);
+        
         DrawGraphicsPlayerBlue(graphics,playerBluePos);
         DrawGraphicsPlayerRed(graphics,playerRedPos,currentPhase,rpsP1);
         if(currentPhase == RpsPhase::ShowResult){
