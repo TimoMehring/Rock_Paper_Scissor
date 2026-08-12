@@ -164,12 +164,25 @@ void UpdatePlayerRedAI(RPSP1 &rpsP1, PlayerRedRpsPosition &playerRedPos, RpsPhas
 void UpdateTurnPlayerRedIntoBack(PlayerRedRpsPosition& playerRedPos, RpsPhase& currentPhase){
     playerRedPos.rockPosPlayerRed.x += (398.0f - playerRedPos.rockPosPlayerRed.x) * 0.05f;
     playerRedPos.scissorPosPlayerRed.x += (398.0f - playerRedPos.scissorPosPlayerRed.x) * 0.05f;
-    if(playerRedPos.rockPosPlayerRed.x == 398.0f && playerRedPos.scissorPosPlayerRed.x == 398.0f){
+    if(playerRedPos.rockPosPlayerRed.x >= 397.0f && playerRedPos.scissorPosPlayerRed.x <= 399.0f){
+          TraceLog(LOG_INFO, "Phase changed to MovePlayerRed");
         currentPhase = RpsPhase::MovePlayerRed;
     }
 }
 
-void UpdatePlayerRedMovement(PlayerRedRpsPosition& playerRedPos,RpsPhase& currentPhase){
+void UpdatePlayerRedMovement(PlayerRedRpsPosition& playerRedPos,RpsPhase& currentPhase,RPSP1 rpsP1){
+    Vector2 targetPosition = {398.0f, 150.0f};
+    playerRedPos.enemyPosPlayerRed.y += (targetPosition.y - playerRedPos.enemyPosPlayerRed.y) * 0.10f;
+    if(playerRedPos.enemyPosPlayerRed.y >= 397){
+        currentPhase = RpsPhase::RevealPlayerRed;
+    }
+}
+
+void UpdateRevealPlayerRed(Graphics& graphics,RpsPhase& currentPhase){
+
+}
+
+/* void UpdatePlayerRedMovement(PlayerRedRpsPosition& playerRedPos,RpsPhase& currentPhase,RPSP1 rpsP1){
     if (currentPhase == RpsPhase::MovePlayerRed)
     {
         if (playerRedPos.rockSelected){
@@ -200,4 +213,4 @@ void UpdatePlayerRedMovement(PlayerRedRpsPosition& playerRedPos,RpsPhase& curren
         }
     }
 
-}
+} */

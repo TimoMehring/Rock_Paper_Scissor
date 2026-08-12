@@ -33,9 +33,12 @@ int main()
         if(currentPhase == RpsPhase::TurnRpsIntoOne){
             UpdateTurnPlayerRedIntoBack(playerRedPos,currentPhase);
         }
-/*         if(currentPhase == RpsPhase::MovePlayerRed){
-            UpdatePlayerRedMovement(playerRedPos, currentPhase);
-        } */
+        if(currentPhase == RpsPhase::MovePlayerRed){
+            UpdatePlayerRedMovement(playerRedPos, currentPhase,rpsP1);
+        }
+        if(currentPhase == RpsPhase::RevealPlayerRed){
+            UpdateRevealPlayerRed(graphics,currentPhase);
+        }
         BeginDrawing();
 
         ClearBackground(DARKBLUE);
