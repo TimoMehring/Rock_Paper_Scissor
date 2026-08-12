@@ -24,7 +24,7 @@ int main()
 
     RpsPhase currentPhase = RpsPhase::PlayerBlueChoice;
 
-    float revealTimer = 0.0f;
+    float drawTimer = 0.0f;
 
     while (!WindowShouldClose())
     {
@@ -40,6 +40,16 @@ int main()
         }
         if(currentPhase == RpsPhase::RevealPlayerRed){
             UpdateRevealPlayerRed(currentPhase);
+        }
+        if(currentPhase == RpsPhase::ShowResult){
+            bool isDraw = ( (rpsP1 == RPSP1::Rock && rpsP2 == RPSP2::Rock) || (rpsP1 == RPSP1::Paper && rpsP2 == RPSP2::Paper) ||  (rpsP1 == RPSP1::Scissor && rpsP2 == RPSP2::Scissor));
+            if(isDraw){
+                drawTimer += GetFrameTime();
+                if(drawTimer  >= 1.0f){
+                    drawTimer = 0.0f;
+                    ResetRound(playerBluePos, playerRedPos, currentPhase);
+                }
+            }
         }
         BeginDrawing();
 

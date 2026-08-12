@@ -186,3 +186,28 @@ void UpdateRevealPlayerRed(RpsPhase& currentPhase){
     
     
 }
+
+void ResetRound(PlayerBlueRpsPosition& playerBluePos,PlayerRedRpsPosition& playerRedPos,RpsPhase& currentPhase){
+    // PlayerBlue start position
+    playerBluePos.rockPosPlayerBlue = {254.0f, 476.0f};
+    playerBluePos.paperPosPlayerBlue = {398.0f, 476.0f};
+    playerBluePos.scissorPosPlayerBlue = {542.0f, 476.0f};
+
+    playerBluePos.rockSelected = false;
+    playerBluePos.paperSelected = false;
+    playerBluePos.scissorSelected = false;
+
+    // PlayerRed start position
+    playerRedPos.rockPosPlayerRed = {254.0f, 20.0f};
+    playerRedPos.paperPosPlayerRed = {398.0f, 20.0f};
+    playerRedPos.scissorPosPlayerRed = {542.0f, 20.0f};
+
+    playerRedPos.enemyPosPlayerRed = {398.0f, 20.0f};
+
+    playerRedPos.rockSelected = false;
+    playerRedPos.paperSelected = false;
+    playerRedPos.scissorSelected = false;
+
+    // new round
+    currentPhase = RpsPhase::PlayerBlueChoice;
+}

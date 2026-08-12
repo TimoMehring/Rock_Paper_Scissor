@@ -10,3 +10,4 @@ void UpdatePlayerRedAI(RPSP1& rpsp1, PlayerRedRpsPosition& playerRedPos, RpsPhas
 void UpdatePlayerRedMovement(PlayerRedRpsPosition& playerRedPos,RpsPhase& currentPhase,RPSP1 rpsP1);
 void UpdateTurnPlayerRedIntoBack(PlayerRedRpsPosition& playerRedPos, RpsPhase& currentPhase);
 void UpdateRevealPlayerRed(RpsPhase& currentPhase);
+void ResetRound(PlayerBlueRpsPosition& playerBluePos,PlayerRedRpsPosition& playerRedPos,RpsPhase& currentPhase);
