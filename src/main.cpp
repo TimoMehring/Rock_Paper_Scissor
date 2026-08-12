@@ -26,6 +26,9 @@ int main()
 
     float resultTimer = 0.0f;
 
+    int blueWinCount = 0;
+    int redWinCount = 0;
+
     while (!WindowShouldClose())
     {
         UpdatePlayerBlueChoice(rpsP2, graphics,playerBluePos, currentPhase);
@@ -55,6 +58,8 @@ int main()
                 resultTimer += GetFrameTime();
                 if(resultTimer  >= 1.0f){
                     resultTimer = 0.0f;
+                    redWinCount++;
+                    TraceLog(LOG_INFO, "Red Wins: %d", redWinCount);
                     ResetRound(playerBluePos, playerRedPos, currentPhase);
                 }
             }
@@ -63,6 +68,8 @@ int main()
                 resultTimer += GetFrameTime();
                 if(resultTimer  >= 1.0f){
                     resultTimer = 0.0f;
+                    blueWinCount++;
+                    TraceLog(LOG_INFO, "Blue Wins: %d", blueWinCount);
                     ResetRound(playerBluePos, playerRedPos, currentPhase);
                 }
             }
