@@ -32,6 +32,8 @@ int main()
     bool resultCounted = false;
 
     bool isDraw = false;
+    bool redWins = false;
+    bool blueWins = false;
 
     while (!WindowShouldClose())
     {
@@ -56,8 +58,8 @@ int main()
         if (currentPhase == RpsPhase::ShowResult)
         {
             isDraw = ((rpsP1 == RPSP1::Rock && rpsP2 == RPSP2::Rock) || (rpsP1 == RPSP1::Paper && rpsP2 == RPSP2::Paper) || (rpsP1 == RPSP1::Scissor && rpsP2 == RPSP2::Scissor));
-            bool redWins = ((rpsP1 == RPSP1::Paper && rpsP2 == RPSP2::Rock) || (rpsP1 == RPSP1::Rock && rpsP2 == RPSP2::Scissor) || (rpsP1 == RPSP1::Scissor && rpsP2 == RPSP2::Paper));
-            bool blueWins = ((rpsP1 == RPSP1::Rock && rpsP2 == RPSP2::Paper) || (rpsP1 == RPSP1::Scissor && rpsP2 == RPSP2::Rock) || (rpsP1 == RPSP1::Paper && rpsP2 == RPSP2::Scissor));
+            redWins = ((rpsP1 == RPSP1::Paper && rpsP2 == RPSP2::Rock) || (rpsP1 == RPSP1::Rock && rpsP2 == RPSP2::Scissor) || (rpsP1 == RPSP1::Scissor && rpsP2 == RPSP2::Paper));
+            blueWins = ((rpsP1 == RPSP1::Rock && rpsP2 == RPSP2::Paper) || (rpsP1 == RPSP1::Scissor && rpsP2 == RPSP2::Rock) || (rpsP1 == RPSP1::Paper && rpsP2 == RPSP2::Scissor));
             
             // Ergebnis dieser Runde nur EINMAL zählen
             if (!resultCounted)
@@ -103,6 +105,10 @@ int main()
         if(isDraw && currentPhase == RpsPhase::ShowResult){
             DrawTextureEx(graphics.draw,{170.0f,240.0f},0.0f,4.0f,WHITE);
             DrawTextureEx(graphics.draw,{570.0f,240.0f},0.0f,4.0f,WHITE);
+        }else if(redWins && currentPhase == RpsPhase::ShowResult){
+            DrawTextureEx(graphics.arrow,{130.0f,130.0f},0.0f,4.0f,WHITE);
+        }else if(blueWins && currentPhase == RpsPhase::ShowResult){
+            DrawTextureEx(graphics.arrow,{130.0f,360.0f},0.0f,4.0f,WHITE);
         }
         if (currentPhase == RpsPhase::ShowResult)
         {

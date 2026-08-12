@@ -13,6 +13,7 @@ struct Graphics{
     Texture2D background;
     Texture2D bestOfFive;
     Texture2D draw;
+    Texture2D arrow;
 
     Texture2D redPlayer;
     Texture2D bluePlayer;

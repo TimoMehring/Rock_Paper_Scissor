@@ -17,6 +17,7 @@ Graphics LoadGraphics()
     graphics.countThree = LoadTexture("assets/three.png");
     graphics.bestOfFive = LoadTexture("assets/bestoffive.png");
     graphics.draw = LoadTexture("assets/draw.png");
+    graphics.arrow = LoadTexture("assets/arrow.png");
 
     return graphics;
 }
@@ -40,6 +41,7 @@ void UnloadGraphics(Graphics &graphics)
     UnloadTexture(graphics.background);
     UnloadTexture(graphics.bestOfFive);
     UnloadTexture(graphics.draw);
+    UnloadTexture(graphics.arrow);
     
     UnloadTexture(graphics.redPlayer);
     UnloadTexture(graphics.bluePlayer);
