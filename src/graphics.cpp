@@ -7,6 +7,8 @@ Graphics LoadGraphics()
     graphics.paper = LoadTexture("assets/paper.png");
     graphics.scissor = LoadTexture("assets/scissor.png");
     graphics.enemy = LoadTexture("assets/enemy.png");
+    graphics.battleArea = LoadTexture("assets/battlearea.png");
+    graphics.background = LoadTexture("assets/background.png");
 
     return graphics;
 }
@@ -34,6 +36,9 @@ void UnloadGraphics(Graphics &graphics)
     UnloadTexture(graphics.paper);
     UnloadTexture(graphics.scissor);
     UnloadTexture(graphics.enemy);
+
+    UnloadTexture(graphics.battleArea);
+    UnloadTexture(graphics.background);
 }
 
 void DrawPlayerRedRPS(Graphics &graphics, PlayerRedRpsPosition playerRedPos, RpsPhase currentPhase, RPSP1 rpsP1)
@@ -64,4 +69,10 @@ void DrawPlayerBlueRPS(Graphics &graphics, PlayerBlueRpsPosition playerBluePos)
     DrawTextureEx(graphics.rock, playerBluePos.rockPosPlayerBlue, 0.0f, 4.0f, WHITE);
     DrawTextureEx(graphics.paper, playerBluePos.paperPosPlayerBlue, 0.0f, 4.0f, WHITE);
     DrawTextureEx(graphics.scissor, playerBluePos.scissorPosPlayerBlue, 0.0f, 4.0f, WHITE);
+}
+
+
+void DrawPlayground(Graphics& graphics){
+    DrawTexture(graphics.background,0,0,WHITE);
+    DrawTexture(graphics.battleArea,360,130,WHITE);
 }

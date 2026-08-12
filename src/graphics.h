@@ -8,6 +8,9 @@ struct Graphics{
     Texture2D paper;
     Texture2D scissor;
     Texture2D enemy;
+
+    Texture2D battleArea;
+    Texture2D background;
 };
 
 Graphics LoadGraphics();
@@ -17,3 +20,4 @@ void DrawPlayerRedRPS(Graphics& graphics,PlayerRedRpsPosition playerRedPos,RpsPh
 void DrawPlayerBlueRPS(Graphics& graphics,PlayerBlueRpsPosition playerBluePos);
 void DrawGraphicsPlayerBlue(Graphics &graphics,PlayerBlueRpsPosition playerBluePos);
 void DrawGraphicsPlayerRed(Graphics &graphics,PlayerRedRpsPosition &playerRedPos,RpsPhase currentPhase,RPSP1 rpsP1);
+void DrawPlayground(Graphics& graphics);

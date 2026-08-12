@@ -41,17 +41,17 @@ int main()
         if(currentPhase == RpsPhase::RevealPlayerRed){
             UpdateRevealPlayerRed(currentPhase);
         }
-        if(currentPhase == RpsPhase::ShowResult){
-            CheckResult(rpsP1,rpsP2);
-        }
         BeginDrawing();
 
         ClearBackground(DARKBLUE);
+        DrawPlayground(graphics);
         //DrawGraphics(graphics,currentState, playerRedPos, playerBluePos, currentPhase, rpsP1);
         DrawGraphicsPlayerBlue(graphics,playerBluePos);
         DrawGraphicsPlayerRed(graphics,playerRedPos,currentPhase,rpsP1);
+        if(currentPhase == RpsPhase::ShowResult){
+            CheckResult(rpsP1,rpsP2);
+        }
         
-        //CheckResult(rpsP1,rpsP2); //paused for "DrawGraphics" tests
 
         EndDrawing();
     }

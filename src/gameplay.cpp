@@ -186,36 +186,3 @@ void UpdateRevealPlayerRed(RpsPhase& currentPhase){
     
     
 }
-
-/* void UpdatePlayerRedMovement(PlayerRedRpsPosition& playerRedPos,RpsPhase& currentPhase,RPSP1 rpsP1){
-    if (currentPhase == RpsPhase::MovePlayerRed)
-    {
-        if (playerRedPos.rockSelected){
-            Vector2 targetPosition = {398.0f, 300.0f};
-            playerRedPos.rockPosPlayerRed.y += (targetPosition.y - playerRedPos.rockPosPlayerRed.y) * 0.05f;
-            if (playerRedPos.rockPosPlayerRed.y >= 199.0f)
-            {
-                currentPhase = RpsPhase::ShowResult;
-            }
-        }
-        else if (playerRedPos.paperSelected){
-            Vector2 targetPosition = {398.0f, 300.0f};
-            playerRedPos.paperPosPlayerRed.y += (targetPosition.y - playerRedPos.paperPosPlayerRed.y) * 0.05f;
-
-            if (playerRedPos.paperPosPlayerRed.y >= 199.0f)
-            {
-                currentPhase = RpsPhase::ShowResult;
-            }
-        }
-        else if (playerRedPos.scissorSelected){
-            Vector2 targetPosition = {398.0f, 300.0f};
-            playerRedPos.scissorPosPlayerRed.y += (targetPosition.y - playerRedPos.scissorPosPlayerRed.y) * 0.05f;
-
-            if (playerRedPos.scissorPosPlayerRed.y >= 199.0f)
-            {
-                currentPhase = RpsPhase::ShowResult;
-            }
-        }
-    }
-
-} */
