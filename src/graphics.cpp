@@ -13,8 +13,8 @@ Graphics LoadGraphics()
     graphics.bluePlayer = LoadTexture("assets/playerBlue.png");
     graphics.countZero = LoadTexture("assets/zero.png");
     graphics.countOne = LoadTexture("assets/one.png");
-    graphics.countTwo = LoadTexture("assets/two");
-    graphics.countThree = LoadTexture("assets/three");
+    graphics.countTwo = LoadTexture("assets/two.png");
+    graphics.countThree = LoadTexture("assets/three.png");
 
     return graphics;
 }

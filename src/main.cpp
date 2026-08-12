@@ -29,49 +29,64 @@ int main()
     int blueWinCount = 0;
     int redWinCount = 0;
 
+    bool resultCounted = false;
+
     while (!WindowShouldClose())
     {
-        UpdatePlayerBlueChoice(rpsP2, graphics,playerBluePos, currentPhase);
-        if(currentPhase == RpsPhase::PlayerRedAI){
+        UpdatePlayerBlueChoice(rpsP2, graphics, playerBluePos, currentPhase);
+        if (currentPhase == RpsPhase::PlayerRedAI)
+        {
             UpdatePlayerRedAI(rpsP1, playerRedPos, currentPhase);
         }
-        if(currentPhase == RpsPhase::TurnRpsIntoOne){
-            UpdateTurnPlayerRedIntoBack(playerRedPos,currentPhase);
+        if (currentPhase == RpsPhase::TurnRpsIntoOne)
+        {
+            UpdateTurnPlayerRedIntoBack(playerRedPos, currentPhase);
         }
-        if(currentPhase == RpsPhase::MovePlayerRed){
-            UpdatePlayerRedMovement(playerRedPos, currentPhase,rpsP1);
+        if (currentPhase == RpsPhase::MovePlayerRed)
+        {
+            UpdatePlayerRedMovement(playerRedPos, currentPhase, rpsP1);
         }
-        if(currentPhase == RpsPhase::RevealPlayerRed){
+        if (currentPhase == RpsPhase::RevealPlayerRed)
+        {
             UpdateRevealPlayerRed(currentPhase);
         }
-        if(currentPhase == RpsPhase::ShowResult){
-            bool isDraw = ((rpsP1 == RPSP1::Rock && rpsP2 == RPSP2::Rock) || (rpsP1 == RPSP1::Paper && rpsP2 == RPSP2::Paper) ||  (rpsP1 == RPSP1::Scissor && rpsP2 == RPSP2::Scissor));
-            if(isDraw){
-                resultTimer += GetFrameTime();
-                if(resultTimer  >= 1.0f){
-                    resultTimer = 0.0f;
-                    ResetRound(playerBluePos, playerRedPos, currentPhase);
-                }
-            }
-            bool redWins =((rpsP1 == RPSP1::Paper && rpsP2 == RPSP2::Rock) || (rpsP1 == RPSP1::Rock && rpsP2 == RPSP2::Scissor) || (rpsP1 == RPSP1::Scissor && rpsP2 == RPSP2::Paper));
-            if(redWins){
-                resultTimer += GetFrameTime();
-                if(resultTimer  >= 1.0f){
-                    resultTimer = 0.0f;
+
+        if (currentPhase == RpsPhase::ShowResult)
+        {
+            bool isDraw = ((rpsP1 == RPSP1::Rock && rpsP2 == RPSP2::Rock) || (rpsP1 == RPSP1::Paper && rpsP2 == RPSP2::Paper) || (rpsP1 == RPSP1::Scissor && rpsP2 == RPSP2::Scissor));
+            bool redWins = ((rpsP1 == RPSP1::Paper && rpsP2 == RPSP2::Rock) || (rpsP1 == RPSP1::Rock && rpsP2 == RPSP2::Scissor) || (rpsP1 == RPSP1::Scissor && rpsP2 == RPSP2::Paper));
+            bool blueWins = ((rpsP1 == RPSP1::Rock && rpsP2 == RPSP2::Paper) || (rpsP1 == RPSP1::Scissor && rpsP2 == RPSP2::Rock) || (rpsP1 == RPSP1::Paper && rpsP2 == RPSP2::Scissor));
+            
+            // Ergebnis dieser Runde nur EINMAL zählen
+            if (!resultCounted)
+            {
+                if (redWins)
+                {
                     redWinCount++;
                     TraceLog(LOG_INFO, "Red Wins: %d", redWinCount);
-                    ResetRound(playerBluePos, playerRedPos, currentPhase);
                 }
-            }
-            bool blueWins =((rpsP1 == RPSP1::Rock && rpsP2 == RPSP2::Paper) || (rpsP1 == RPSP1::Scissor && rpsP2 == RPSP2::Rock) || (rpsP1 == RPSP1::Paper && rpsP2 == RPSP2::Scissor));
-            if(blueWins){
-                resultTimer += GetFrameTime();
-                if(resultTimer  >= 1.0f){
-                    resultTimer = 0.0f;
+                else if (blueWins)
+                {
                     blueWinCount++;
                     TraceLog(LOG_INFO, "Blue Wins: %d", blueWinCount);
-                    ResetRound(playerBluePos, playerRedPos, currentPhase);
                 }
+                else if (isDraw)
+                {
+                    TraceLog(LOG_INFO, "Round is Draw");
+                }
+
+                resultCounted = true;
+            }
+
+            // Für ALLE Ergebnisse 1 Sekunde warten
+            resultTimer += GetFrameTime();
+
+            if (resultTimer >= 1.0f)
+            {
+                resultTimer = 0.0f;
+                resultCounted = false;
+
+                ResetRound(playerBluePos, playerRedPos, currentPhase);
             }
         }
         BeginDrawing();
@@ -79,15 +94,14 @@ int main()
         ClearBackground(DARKBLUE);
         DrawPlayground(graphics);
 
-        DrawCount(graphics,redWinCount,blueWinCount);
-        
-        
-        DrawGraphicsPlayerBlue(graphics,playerBluePos);
-        DrawGraphicsPlayerRed(graphics,playerRedPos,currentPhase,rpsP1);
-        if(currentPhase == RpsPhase::ShowResult){
-            CheckResult(rpsP1,rpsP2);
+        DrawCount(graphics, redWinCount, blueWinCount);
+
+        DrawGraphicsPlayerBlue(graphics, playerBluePos);
+        DrawGraphicsPlayerRed(graphics, playerRedPos, currentPhase, rpsP1);
+        if (currentPhase == RpsPhase::ShowResult)
+        {
+            CheckResult(rpsP1, rpsP2);
         }
-        
 
         EndDrawing();
     }
