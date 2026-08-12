@@ -46,7 +46,7 @@ void DrawPlayerRedRPS(Graphics &graphics, PlayerRedRpsPosition playerRedPos, Rps
     else if(currentPhase == RpsPhase::MovePlayerRed){
         DrawTextureEx(graphics.enemy,playerRedPos.enemyPosPlayerRed,0.0f, 4.0f,WHITE);
     }
-    else if(currentPhase == RpsPhase::RevealPlayerRed){
+    else if(currentPhase == RpsPhase::RevealPlayerRed || currentPhase == RpsPhase::ShowResult){
         if(rpsP1 == RPSP1::Rock){
             DrawTextureEx(graphics.rock, playerRedPos.enemyPosPlayerRed, 0.0f, 4.0f, WHITE);
         }

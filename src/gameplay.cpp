@@ -93,8 +93,9 @@ void UpdatePlayerBlueChoice(RPSP2 &rspP2, Graphics &graphics, PlayerBlueRpsPosit
         if (playerBluePos.rockSelected)
         {
             Vector2 targetPosition = {398.0f, 300.0f};
+            playerBluePos.rockPosPlayerBlue.x += (targetPosition.x - playerBluePos.rockPosPlayerBlue.x) * 0.10f;
             playerBluePos.rockPosPlayerBlue.y += (targetPosition.y - playerBluePos.rockPosPlayerBlue.y) * 0.10f;
-            if (playerBluePos.rockPosPlayerBlue.y <= 301.0f)
+            if (playerBluePos.rockPosPlayerBlue.y <= 301.0f && playerBluePos.rockPosPlayerBlue.x >= 397.0f)
             {
                 currentPhase = RpsPhase::PlayerRedAI;
             }
@@ -111,8 +112,9 @@ void UpdatePlayerBlueChoice(RPSP2 &rspP2, Graphics &graphics, PlayerBlueRpsPosit
         else if (playerBluePos.scissorSelected)
         {
             Vector2 targetPosition = {398.0f, 300.0f};
+            playerBluePos.scissorPosPlayerBlue.x += (targetPosition.x - playerBluePos.scissorPosPlayerBlue.x) * 0.10f;
             playerBluePos.scissorPosPlayerBlue.y += (targetPosition.y - playerBluePos.scissorPosPlayerBlue.y) * 0.10f;
-            if (playerBluePos.scissorPosPlayerBlue.y <= 301.0f)
+            if (playerBluePos.scissorPosPlayerBlue.y <= 301.0f && playerBluePos.scissorPosPlayerBlue.x >= 397.0f)
             {
                 currentPhase = RpsPhase::PlayerRedAI;
             }
@@ -178,7 +180,10 @@ void UpdatePlayerRedMovement(PlayerRedRpsPosition& playerRedPos,RpsPhase& curren
     }
 }
 
-void UpdateRevealPlayerRed(Graphics& graphics,RpsPhase& currentPhase,RPSP1 rpsP1){
+void UpdateRevealPlayerRed(RpsPhase& currentPhase){
+
+        currentPhase = RpsPhase::ShowResult;
+    
     
 }
 

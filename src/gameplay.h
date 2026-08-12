@@ -9,4 +9,4 @@ RPSP1 ChoosePlayerRedAI();
 void UpdatePlayerRedAI(RPSP1& rpsp1, PlayerRedRpsPosition& playerRedPos, RpsPhase& currentPhase);
 void UpdatePlayerRedMovement(PlayerRedRpsPosition& playerRedPos,RpsPhase& currentPhase,RPSP1 rpsP1);
 void UpdateTurnPlayerRedIntoBack(PlayerRedRpsPosition& playerRedPos, RpsPhase& currentPhase);
-void UpdateRevealPlayerRed(Graphics& graphics,RpsPhase& currentPhase,RPSP1 rpsP1);
+void UpdateRevealPlayerRed(RpsPhase& currentPhase);

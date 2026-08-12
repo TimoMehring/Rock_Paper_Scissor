@@ -24,6 +24,8 @@ int main()
 
     RpsPhase currentPhase = RpsPhase::PlayerBlueChoice;
 
+    float revealTimer = 0.0f;
+
     while (!WindowShouldClose())
     {
         UpdatePlayerBlueChoice(rpsP2, graphics,playerBluePos, currentPhase);
@@ -36,9 +38,12 @@ int main()
         if(currentPhase == RpsPhase::MovePlayerRed){
             UpdatePlayerRedMovement(playerRedPos, currentPhase,rpsP1);
         }
-/*         if(currentPhase == RpsPhase::RevealPlayerRed){
-            UpdateRevealPlayerRed(graphics,currentPhase,rpsP1);
-        } */
+        if(currentPhase == RpsPhase::RevealPlayerRed){
+            UpdateRevealPlayerRed(currentPhase);
+        }
+        if(currentPhase == RpsPhase::ShowResult){
+            CheckResult(rpsP1,rpsP2);
+        }
         BeginDrawing();
 
         ClearBackground(DARKBLUE);
