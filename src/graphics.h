@@ -13,7 +13,7 @@ struct Graphics{
 Graphics LoadGraphics();
 //void DrawGraphics(Graphics& graphics, States currentState,PlayerRedRpsPosition& playerRedPos,PlayerBlueRpsPosition playerBluePos,RpsPhase currentPhase, RPSP1 rpsP1);
 void UnloadGraphics(Graphics& graphics);
-void DrawPlayerRedGraphics(Graphics& graphics,PlayerRedRpsPosition playerRedPos,RpsPhase currentPhase,RPSP1 rpsP1);
-void DrawPlayerBlueGraphics(Graphics& graphics,PlayerBlueRpsPosition playerBluePos);
+void DrawPlayerRedRPS(Graphics& graphics,PlayerRedRpsPosition playerRedPos,RpsPhase currentPhase,RPSP1 rpsP1);
+void DrawPlayerBlueRPS(Graphics& graphics,PlayerBlueRpsPosition playerBluePos);
 void DrawGraphicsPlayerBlue(Graphics &graphics,PlayerBlueRpsPosition playerBluePos);
 void DrawGraphicsPlayerRed(Graphics &graphics,PlayerRedRpsPosition &playerRedPos,RpsPhase currentPhase,RPSP1 rpsP1);

@@ -21,11 +21,11 @@ Graphics LoadGraphics()
 } */
 
 void DrawGraphicsPlayerBlue(Graphics &graphics,PlayerBlueRpsPosition playerBluePos){
-    DrawPlayerBlueGraphics(graphics, playerBluePos);
+    DrawPlayerBlueRPS(graphics, playerBluePos);
 }
 
 void DrawGraphicsPlayerRed(Graphics &graphics,PlayerRedRpsPosition& playerRedPos,RpsPhase currentPhase, RPSP1 rpsP1){
-    DrawPlayerRedGraphics(graphics, playerRedPos,currentPhase, rpsP1);
+    DrawPlayerRedRPS(graphics, playerRedPos,currentPhase, rpsP1);
 }
 
 void UnloadGraphics(Graphics &graphics)
@@ -36,7 +36,7 @@ void UnloadGraphics(Graphics &graphics)
     UnloadTexture(graphics.enemy);
 }
 
-void DrawPlayerRedGraphics(Graphics &graphics, PlayerRedRpsPosition playerRedPos, RpsPhase currentPhase, RPSP1 rpsP1)
+void DrawPlayerRedRPS(Graphics &graphics, PlayerRedRpsPosition playerRedPos, RpsPhase currentPhase, RPSP1 rpsP1)
 {
     if (currentPhase == RpsPhase::PlayerBlueChoice || currentPhase == RpsPhase::MovePlayerBlue || currentPhase == RpsPhase::PlayerRedAI || currentPhase == RpsPhase::TurnRpsIntoOne){
         DrawTextureEx(graphics.rock, playerRedPos.rockPosPlayerRed, 0.0f, 4.0f, WHITE);
@@ -46,9 +46,20 @@ void DrawPlayerRedGraphics(Graphics &graphics, PlayerRedRpsPosition playerRedPos
     else if(currentPhase == RpsPhase::MovePlayerRed){
         DrawTextureEx(graphics.enemy,playerRedPos.enemyPosPlayerRed,0.0f, 4.0f,WHITE);
     }
+    else if(currentPhase == RpsPhase::RevealPlayerRed){
+        if(rpsP1 == RPSP1::Rock){
+            DrawTextureEx(graphics.rock, playerRedPos.enemyPosPlayerRed, 0.0f, 4.0f, WHITE);
+        }
+        else if(rpsP1 == RPSP1::Paper){
+             DrawTextureEx(graphics.paper, playerRedPos.enemyPosPlayerRed, 0.0f, 4.0f, WHITE);
+        }
+        else if(rpsP1 == RPSP1::Scissor){
+             DrawTextureEx(graphics.scissor, playerRedPos.enemyPosPlayerRed, 0.0f, 4.0f, WHITE);
+        }
+    }
 }
 
-void DrawPlayerBlueGraphics(Graphics &graphics, PlayerBlueRpsPosition playerBluePos)
+void DrawPlayerBlueRPS(Graphics &graphics, PlayerBlueRpsPosition playerBluePos)
 {
     DrawTextureEx(graphics.rock, playerBluePos.rockPosPlayerBlue, 0.0f, 4.0f, WHITE);
     DrawTextureEx(graphics.paper, playerBluePos.paperPosPlayerBlue, 0.0f, 4.0f, WHITE);

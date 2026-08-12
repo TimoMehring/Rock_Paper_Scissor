@@ -173,13 +173,13 @@ void UpdateTurnPlayerRedIntoBack(PlayerRedRpsPosition& playerRedPos, RpsPhase& c
 void UpdatePlayerRedMovement(PlayerRedRpsPosition& playerRedPos,RpsPhase& currentPhase,RPSP1 rpsP1){
     Vector2 targetPosition = {398.0f, 150.0f};
     playerRedPos.enemyPosPlayerRed.y += (targetPosition.y - playerRedPos.enemyPosPlayerRed.y) * 0.10f;
-    if(playerRedPos.enemyPosPlayerRed.y >= 397){
+    if(playerRedPos.enemyPosPlayerRed.y >= 149){
         currentPhase = RpsPhase::RevealPlayerRed;
     }
 }
 
-void UpdateRevealPlayerRed(Graphics& graphics,RpsPhase& currentPhase){
-
+void UpdateRevealPlayerRed(Graphics& graphics,RpsPhase& currentPhase,RPSP1 rpsP1){
+    
 }
 
 /* void UpdatePlayerRedMovement(PlayerRedRpsPosition& playerRedPos,RpsPhase& currentPhase,RPSP1 rpsP1){
