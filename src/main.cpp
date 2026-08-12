@@ -33,13 +33,15 @@ int main()
         if(currentPhase == RpsPhase::TurnRpsIntoOne){
             UpdateTurnPlayerRedIntoBack(playerRedPos,currentPhase);
         }
-        if(currentPhase == RpsPhase::MovePlayerRed){
+/*         if(currentPhase == RpsPhase::MovePlayerRed){
             UpdatePlayerRedMovement(playerRedPos, currentPhase);
-        }
+        } */
         BeginDrawing();
 
         ClearBackground(DARKBLUE);
-        DrawGraphics(graphics,currentState, playerRedPos, playerBluePos, currentPhase, rpsP1);
+        //DrawGraphics(graphics,currentState, playerRedPos, playerBluePos, currentPhase, rpsP1);
+        DrawGraphicsPlayerBlue(graphics,playerBluePos);
+        DrawGraphicsPlayerRed(graphics,playerRedPos,currentPhase,rpsP1);
         
         //CheckResult(rpsP1,rpsP2); //paused for "DrawGraphics" tests
 

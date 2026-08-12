@@ -11,13 +11,21 @@ Graphics LoadGraphics()
     return graphics;
 }
 
-void DrawGraphics(Graphics &graphics, States currentState, PlayerRedRpsPosition &playerRedPos, PlayerBlueRpsPosition playerBluePos,RpsPhase currentPhase, RPSP1 rpsP1)
+/* void DrawGraphics(Graphics &graphics, States currentState, PlayerRedRpsPosition &playerRedPos, PlayerBlueRpsPosition playerBluePos,RpsPhase currentPhase, RPSP1 rpsP1)
 {
     if (currentState == States::Choice_Rock_Paper_Scissor)
     {
         DrawPlayerRedGraphics(graphics, playerRedPos,currentPhase,rpsP1);
         DrawPlayerBlueGraphics(graphics, playerBluePos);
     }
+} */
+
+void DrawGraphicsPlayerBlue(Graphics &graphics,PlayerBlueRpsPosition playerBluePos){
+    DrawPlayerBlueGraphics(graphics, playerBluePos);
+}
+
+void DrawGraphicsPlayerRed(Graphics &graphics,PlayerRedRpsPosition& playerRedPos,RpsPhase currentPhase, RPSP1 rpsP1){
+    DrawPlayerRedGraphics(graphics, playerRedPos,currentPhase, rpsP1);
 }
 
 void UnloadGraphics(Graphics &graphics)

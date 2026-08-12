@@ -93,7 +93,7 @@ void UpdatePlayerBlueChoice(RPSP2 &rspP2, Graphics &graphics, PlayerBlueRpsPosit
         if (playerBluePos.rockSelected)
         {
             Vector2 targetPosition = {398.0f, 300.0f};
-            playerBluePos.rockPosPlayerBlue.y += (targetPosition.y - playerBluePos.rockPosPlayerBlue.y) * 0.05f;
+            playerBluePos.rockPosPlayerBlue.y += (targetPosition.y - playerBluePos.rockPosPlayerBlue.y) * 0.10f;
             if (playerBluePos.rockPosPlayerBlue.y <= 301.0f)
             {
                 currentPhase = RpsPhase::PlayerRedAI;
@@ -102,7 +102,7 @@ void UpdatePlayerBlueChoice(RPSP2 &rspP2, Graphics &graphics, PlayerBlueRpsPosit
         else if (playerBluePos.paperSelected)
         {
             Vector2 targetPosition = {398.0f, 300.0f};
-            playerBluePos.paperPosPlayerBlue.y += (targetPosition.y - playerBluePos.paperPosPlayerBlue.y) * 0.05f;
+            playerBluePos.paperPosPlayerBlue.y += (targetPosition.y - playerBluePos.paperPosPlayerBlue.y) * 0.10f;
             if (playerBluePos.paperPosPlayerBlue.y <= 301.0f)
             {
                 currentPhase = RpsPhase::PlayerRedAI;
@@ -111,7 +111,7 @@ void UpdatePlayerBlueChoice(RPSP2 &rspP2, Graphics &graphics, PlayerBlueRpsPosit
         else if (playerBluePos.scissorSelected)
         {
             Vector2 targetPosition = {398.0f, 300.0f};
-            playerBluePos.scissorPosPlayerBlue.y += (targetPosition.y - playerBluePos.scissorPosPlayerBlue.y) * 0.05f;
+            playerBluePos.scissorPosPlayerBlue.y += (targetPosition.y - playerBluePos.scissorPosPlayerBlue.y) * 0.10f;
             if (playerBluePos.scissorPosPlayerBlue.y <= 301.0f)
             {
                 currentPhase = RpsPhase::PlayerRedAI;
@@ -140,27 +140,33 @@ void UpdatePlayerRedAI(RPSP1 &rpsP1, PlayerRedRpsPosition &playerRedPos, RpsPhas
     rpsP1 = ChoosePlayerRedAI();
 
     if (rpsP1 == RPSP1::Rock){
+        TraceLog(LOG_INFO, "PlayerRed AI chose: Rock");
         playerRedPos.rockSelected = true;
         playerRedPos.paperSelected = false;
         playerRedPos.scissorSelected = false;
     }
     else if (rpsP1 == RPSP1::Paper){
+        TraceLog(LOG_INFO, "PlayerRed AI chose: Paper");
         playerRedPos.rockSelected = false;
         playerRedPos.paperSelected = true;
         playerRedPos.scissorSelected = false;
     }
     else if (rpsP1 == RPSP1::Scissor){
+        TraceLog(LOG_INFO, "PlayerRed AI chose: Scissor");
         playerRedPos.rockSelected = false;
         playerRedPos.paperSelected = false;
         playerRedPos.scissorSelected = true;
     }
-
+    
     currentPhase = RpsPhase::TurnRpsIntoOne;
 }
 
 void UpdateTurnPlayerRedIntoBack(PlayerRedRpsPosition& playerRedPos, RpsPhase& currentPhase){
     playerRedPos.rockPosPlayerRed.x += (398.0f - playerRedPos.rockPosPlayerRed.x) * 0.05f;
     playerRedPos.scissorPosPlayerRed.x += (398.0f - playerRedPos.scissorPosPlayerRed.x) * 0.05f;
+    if(playerRedPos.rockPosPlayerRed.x == 398.0f && playerRedPos.scissorPosPlayerRed.x == 398.0f){
+        currentPhase = RpsPhase::MovePlayerRed;
+    }
 }
 
 void UpdatePlayerRedMovement(PlayerRedRpsPosition& playerRedPos,RpsPhase& currentPhase){

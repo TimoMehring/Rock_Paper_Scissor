@@ -15,4 +15,5 @@ void DrawGraphics(Graphics& graphics, States currentState,PlayerRedRpsPosition& 
 void UnloadGraphics(Graphics& graphics);
 void DrawPlayerRedGraphics(Graphics& graphics,PlayerRedRpsPosition playerRedPos,RpsPhase currentPhase,RPSP1 rpsP1);
 void DrawPlayerBlueGraphics(Graphics& graphics,PlayerBlueRpsPosition playerBluePos);
-//void DrawPlayerRedGraphics(Graphics& graphics,PlayerRedRpsPosition& playerRedPos,RpsPhase currentPhase,RPSP1 rpsP1);
+void DrawGraphicsPlayerBlue(Graphics &graphics,PlayerBlueRpsPosition playerBluePos);
+void DrawGraphicsPlayerRed(Graphics &graphics,PlayerRedRpsPosition &playerRedPos,RpsPhase currentPhase,RPSP1 rpsP1);
