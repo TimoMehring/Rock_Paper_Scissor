@@ -78,6 +78,9 @@ int main()
 
         ClearBackground(DARKBLUE);
         DrawPlayground(graphics);
+
+        DrawCount(graphics,redWinCount,blueWinCount);
+        
         
         DrawGraphicsPlayerBlue(graphics,playerBluePos);
         DrawGraphicsPlayerRed(graphics,playerRedPos,currentPhase,rpsP1);

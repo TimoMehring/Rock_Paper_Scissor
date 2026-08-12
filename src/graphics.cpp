@@ -9,6 +9,12 @@ Graphics LoadGraphics()
     graphics.enemy = LoadTexture("assets/enemy.png");
     graphics.battleArea = LoadTexture("assets/battlearea.png");
     graphics.background = LoadTexture("assets/background.png");
+    graphics.redPlayer = LoadTexture("assets/playerRed.png");
+    graphics.bluePlayer = LoadTexture("assets/playerBlue.png");
+    graphics.countZero = LoadTexture("assets/zero.png");
+    graphics.countOne = LoadTexture("assets/one.png");
+    graphics.countTwo = LoadTexture("assets/two");
+    graphics.countThree = LoadTexture("assets/three");
 
     return graphics;
 }
@@ -30,6 +36,14 @@ void UnloadGraphics(Graphics &graphics)
 
     UnloadTexture(graphics.battleArea);
     UnloadTexture(graphics.background);
+    
+    UnloadTexture(graphics.redPlayer);
+    UnloadTexture(graphics.bluePlayer);
+
+    UnloadTexture(graphics.countZero);
+    UnloadTexture(graphics.countOne);
+    UnloadTexture(graphics.countTwo);
+    UnloadTexture(graphics.countThree);
 }
 
 void DrawPlayerRedRPS(Graphics &graphics, PlayerRedRpsPosition playerRedPos, RpsPhase currentPhase, RPSP1 rpsP1)
@@ -66,4 +80,35 @@ void DrawPlayerBlueRPS(Graphics &graphics, PlayerBlueRpsPosition playerBluePos)
 void DrawPlayground(Graphics& graphics){
     DrawTexture(graphics.background,0,0,WHITE);
     DrawTexture(graphics.battleArea,360,130,WHITE);
+    DrawTextureEx(graphics.redPlayer,{30.0f,30.0f},0.0f,5.0f,WHITE);
+    DrawTextureEx(graphics.bluePlayer,{30.0f,470.0f},0.0f,5.0f,WHITE);
+}
+
+void DrawCount(Graphics& graphics,int redWinCount,int blueWinCount){
+    TraceLog(LOG_INFO,"Red Count: %d | Blue Count: %d",redWinCount,blueWinCount);
+    if(redWinCount == 0){
+        DrawTextureEx(graphics.countZero,{40.0f,140.0f},0.0f,7.0f,WHITE);
+    }
+    else if(redWinCount == 1){
+        DrawTextureEx(graphics.countOne,{40.0f,140.0f},0.0f,7.0f,WHITE);
+    }
+    else if(redWinCount == 2){
+        DrawTextureEx(graphics.countTwo,{40.0f,140.0f},0.0f,7.0f,WHITE);
+    }
+    else if(redWinCount == 3){
+        DrawTextureEx(graphics.countThree,{40.0f,140.0f},0.0f,7.0f,WHITE);
+    }
+
+    if(blueWinCount == 0){
+        DrawTextureEx(graphics.countZero,{40.0f,370.0f},0.0f,7.0f,WHITE);
+    }
+    else if(blueWinCount == 1){
+        DrawTextureEx(graphics.countOne,{40.0f,370.0f},0.0f,7.0f,WHITE);
+    }
+    else if(blueWinCount == 2){
+        DrawTextureEx(graphics.countTwo,{40.0f,370.0f},0.0f,7.0f,WHITE);
+    }
+    else if(blueWinCount == 3){
+        DrawTextureEx(graphics.countThree,{40.0f,370.0f},0.0f,7.0f,WHITE);
+    }
 }

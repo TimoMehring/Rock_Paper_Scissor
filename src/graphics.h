@@ -11,6 +11,14 @@ struct Graphics{
 
     Texture2D battleArea;
     Texture2D background;
+
+    Texture2D redPlayer;
+    Texture2D bluePlayer;
+
+    Texture2D countZero;
+    Texture2D countOne;
+    Texture2D countTwo;
+    Texture2D countThree;
 };
 
 Graphics LoadGraphics();
@@ -21,3 +29,4 @@ void DrawPlayerBlueRPS(Graphics& graphics,PlayerBlueRpsPosition playerBluePos);
 void DrawGraphicsPlayerBlue(Graphics &graphics,PlayerBlueRpsPosition playerBluePos);
 void DrawGraphicsPlayerRed(Graphics &graphics,PlayerRedRpsPosition &playerRedPos,RpsPhase currentPhase,RPSP1 rpsP1);
 void DrawPlayground(Graphics& graphics);
+void DrawCount(Graphics& graphics,int redWinCount,int blueWinCount);
