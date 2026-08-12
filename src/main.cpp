@@ -31,6 +31,8 @@ int main()
 
     bool resultCounted = false;
 
+    bool isDraw = false;
+
     while (!WindowShouldClose())
     {
         UpdatePlayerBlueChoice(rpsP2, graphics, playerBluePos, currentPhase);
@@ -53,7 +55,7 @@ int main()
 
         if (currentPhase == RpsPhase::ShowResult)
         {
-            bool isDraw = ((rpsP1 == RPSP1::Rock && rpsP2 == RPSP2::Rock) || (rpsP1 == RPSP1::Paper && rpsP2 == RPSP2::Paper) || (rpsP1 == RPSP1::Scissor && rpsP2 == RPSP2::Scissor));
+            isDraw = ((rpsP1 == RPSP1::Rock && rpsP2 == RPSP2::Rock) || (rpsP1 == RPSP1::Paper && rpsP2 == RPSP2::Paper) || (rpsP1 == RPSP1::Scissor && rpsP2 == RPSP2::Scissor));
             bool redWins = ((rpsP1 == RPSP1::Paper && rpsP2 == RPSP2::Rock) || (rpsP1 == RPSP1::Rock && rpsP2 == RPSP2::Scissor) || (rpsP1 == RPSP1::Scissor && rpsP2 == RPSP2::Paper));
             bool blueWins = ((rpsP1 == RPSP1::Rock && rpsP2 == RPSP2::Paper) || (rpsP1 == RPSP1::Scissor && rpsP2 == RPSP2::Rock) || (rpsP1 == RPSP1::Paper && rpsP2 == RPSP2::Scissor));
             
@@ -98,11 +100,14 @@ int main()
 
         DrawGraphicsPlayerBlue(graphics, playerBluePos);
         DrawGraphicsPlayerRed(graphics, playerRedPos, currentPhase, rpsP1);
+        if(isDraw && currentPhase == RpsPhase::ShowResult){
+            DrawTextureEx(graphics.draw,{170.0f,240.0f},0.0f,4.0f,WHITE);
+            DrawTextureEx(graphics.draw,{570.0f,240.0f},0.0f,4.0f,WHITE);
+        }
         if (currentPhase == RpsPhase::ShowResult)
         {
-            CheckResult(rpsP1, rpsP2);
+            //CheckResult(rpsP1, rpsP2);
         }
-
         EndDrawing();
     }
     UnloadGraphics(graphics);

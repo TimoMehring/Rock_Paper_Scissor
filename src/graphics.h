@@ -11,6 +11,8 @@ struct Graphics{
 
     Texture2D battleArea;
     Texture2D background;
+    Texture2D bestOfFive;
+    Texture2D draw;
 
     Texture2D redPlayer;
     Texture2D bluePlayer;
