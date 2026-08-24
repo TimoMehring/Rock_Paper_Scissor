@@ -21,7 +21,12 @@ enum class RpsPhase
     TurnRpsIntoOne,
     MovePlayerRed,
     RevealPlayerRed,
-    ShowResult
+    ShowResult,
+
+    PlayerRedWins,
+    PlayerBlueWins,
+
+    StartNewMatch
 
 };
 

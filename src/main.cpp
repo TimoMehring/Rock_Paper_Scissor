@@ -90,8 +90,32 @@ int main()
                 resultTimer = 0.0f;
                 resultCounted = false;
 
-                ResetRound(playerBluePos, playerRedPos, currentPhase);
+                if(redWinCount >= 3){
+                    currentPhase = RpsPhase::PlayerRedWins;
+                }
+                else if(blueWinCount >= 3){
+                    currentPhase = RpsPhase::PlayerBlueWins;
+                }
+                else{
+                    ResetRound(playerBluePos, playerRedPos, currentPhase);
+                }
             }
+        }
+
+        if(currentPhase == RpsPhase::PlayerRedWins || currentPhase == RpsPhase::PlayerBlueWins){
+            if(IsKeyPressed(KEY_ENTER) || (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))){
+                currentPhase = RpsPhase::StartNewMatch;
+            }
+        }
+
+        if(currentPhase == RpsPhase::StartNewMatch){
+            redWinCount = 0;
+            blueWinCount = 0;
+
+            resultTimer = 0;
+            resultCounted = false;
+
+            ResetRound(playerBluePos, playerRedPos, currentPhase);
         }
         BeginDrawing();
 
@@ -113,6 +137,12 @@ int main()
         if (currentPhase == RpsPhase::ShowResult)
         {
             //CheckResult(rpsP1, rpsP2);
+        }
+        if(currentPhase == RpsPhase::PlayerRedWins){
+            DrawText("PLAYER RED WINS", 300, 280, 30, RED);
+        }
+        else if(currentPhase == RpsPhase::PlayerBlueWins){
+            DrawText("PLAYER BLUE WINS", 300, 280, 30, BLUE);
         }
         EndDrawing();
     }
