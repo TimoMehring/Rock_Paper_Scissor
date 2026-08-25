@@ -43,7 +43,7 @@ void CheckResult(RPSP1 rpsP1, RPSP2 rpsP2)
     }
 }
 
-void UpdatePlayerBlueChoice(RPSP2 &rspP2, Graphics &graphics, PlayerBlueRpsPosition &playerBluePos, RpsPhase &currentPhase)
+void UpdatePlayerBlueChoice(RPSP2 &rspP2, Graphics &graphics, PlayerBlueRpsPosition &playerBluePos, RpsPhase &currentPhase,Audio audio)
 {
     Rectangle rockRect = {254.0f, 476.0f, graphics.rock.width * 4.0f, graphics.rock.height * 4.0f};
     Rectangle paperRect = {398.0f, 476.0f, graphics.paper.width * 4.0f, graphics.paper.height * 4.0f};
@@ -61,6 +61,7 @@ void UpdatePlayerBlueChoice(RPSP2 &rspP2, Graphics &graphics, PlayerBlueRpsPosit
                 playerBluePos.rockSelected = true;
                 playerBluePos.paperSelected = false;
                 playerBluePos.scissorSelected = false;
+                PlaySound(audio.ChoiceSound);
                 currentPhase = RpsPhase::MovePlayerBlue;
             }
         }
@@ -72,6 +73,7 @@ void UpdatePlayerBlueChoice(RPSP2 &rspP2, Graphics &graphics, PlayerBlueRpsPosit
                 playerBluePos.rockSelected = false;
                 playerBluePos.paperSelected = true;
                 playerBluePos.scissorSelected = false;
+                PlaySound(audio.ChoiceSound);
                 currentPhase = RpsPhase::MovePlayerBlue;
             }
         }
@@ -83,6 +85,7 @@ void UpdatePlayerBlueChoice(RPSP2 &rspP2, Graphics &graphics, PlayerBlueRpsPosit
                 playerBluePos.rockSelected = false;
                 playerBluePos.paperSelected = false;
                 playerBluePos.scissorSelected = true;
+                PlaySound(audio.ChoiceSound);
                 currentPhase = RpsPhase::MovePlayerBlue;
             }
         }

@@ -18,6 +18,8 @@ Graphics LoadGraphics()
     graphics.bestOfFive = LoadTexture("assets/bestoffive.png");
     graphics.draw = LoadTexture("assets/draw.png");
     graphics.arrow = LoadTexture("assets/arrow.png");
+    graphics.redWins = LoadTexture("assets/redwins.png");
+    graphics.blueWins = LoadTexture("assets/bluewins.png");
 
     return graphics;
 }
@@ -50,6 +52,9 @@ void UnloadGraphics(Graphics &graphics)
     UnloadTexture(graphics.countOne);
     UnloadTexture(graphics.countTwo);
     UnloadTexture(graphics.countThree);
+
+    UnloadTexture(graphics.redWins);
+    UnloadTexture(graphics.blueWins);
 }
 
 void DrawPlayerRedRPS(Graphics &graphics, PlayerRedRpsPosition playerRedPos, RpsPhase currentPhase, RPSP1 rpsP1)
@@ -85,7 +90,7 @@ void DrawPlayerBlueRPS(Graphics &graphics, PlayerBlueRpsPosition playerBluePos)
 
 void DrawPlayground(Graphics& graphics){
     DrawTexture(graphics.background,0,0,WHITE);
-    DrawTexture(graphics.battleArea,360,130,WHITE);
+    DrawTexture(graphics.battleArea,360,140,WHITE); // height 130
     DrawTextureEx(graphics.bestOfFive,{700.0f,480.0f},0.0f,4.0f,WHITE); // 30, 255
     DrawTextureEx(graphics.redPlayer,{30.0f,30.0f},0.0f,5.0f,WHITE);
     DrawTextureEx(graphics.bluePlayer,{30.0f,470.0f},0.0f,5.0f,WHITE);

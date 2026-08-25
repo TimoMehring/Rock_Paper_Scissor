@@ -3,6 +3,7 @@
 #include "player.h"
 #include "gameplay.h"
 #include "graphics.h"
+#include "audio.h"
 
 int main()
 {
@@ -13,10 +14,12 @@ int main()
     RPSP2 rpsP2 = RPSP2::Rock;
 
     InitWindow(screenWidth, screenHeight, "RPS");
+    InitAudioDevice();
 
     SetTargetFPS(60);
 
     Graphics graphics = LoadGraphics();
+    Audio audio = LoadAudio();
     States currentState = States::Choice_Rock_Paper_Scissor;
 
     PlayerRedRpsPosition playerRedPos;
@@ -35,9 +38,14 @@ int main()
     bool redWins = false;
     bool blueWins = false;
 
+    bool redChoiceSoundPlayed = false;
+
+    PlayMusicStream(audio.Theme);
+
     while (!WindowShouldClose())
     {
-        UpdatePlayerBlueChoice(rpsP2, graphics, playerBluePos, currentPhase);
+        UpdateMusicStream(audio.Theme);
+        UpdatePlayerBlueChoice(rpsP2, graphics, playerBluePos, currentPhase,audio);
         if (currentPhase == RpsPhase::PlayerRedAI)
         {
             UpdatePlayerRedAI(rpsP1, playerRedPos, currentPhase);
@@ -48,6 +56,10 @@ int main()
         }
         if (currentPhase == RpsPhase::MovePlayerRed)
         {
+            if(!redChoiceSoundPlayed){
+                PlaySound(audio.ChoiceSound);
+                redChoiceSoundPlayed = true;
+            }
             UpdatePlayerRedMovement(playerRedPos, currentPhase, rpsP1);
         }
         if (currentPhase == RpsPhase::RevealPlayerRed)
@@ -98,6 +110,7 @@ int main()
                 }
                 else{
                     ResetRound(playerBluePos, playerRedPos, currentPhase);
+                    redChoiceSoundPlayed = false;
                 }
             }
         }
@@ -139,13 +152,15 @@ int main()
             //CheckResult(rpsP1, rpsP2);
         }
         if(currentPhase == RpsPhase::PlayerRedWins){
-            DrawText("PLAYER RED WINS", 300, 280, 30, RED);
+            DrawTextureEx(graphics.redWins, {220.0f,230.0f}, 0.0f, 5.0f,WHITE);
         }
         else if(currentPhase == RpsPhase::PlayerBlueWins){
-            DrawText("PLAYER BLUE WINS", 300, 280, 30, BLUE);
+            DrawTextureEx(graphics.blueWins, {220.0f,230.0f}, 0.0f, 5.0f,WHITE);
         }
+        //DrawTextureEx(graphics.redWins, {220.0f,230.0f}, 0.0f, 5.0f,WHITE);
         EndDrawing();
     }
+    UnloadAudio(audio);
     UnloadGraphics(graphics);
 
     CloseWindow();

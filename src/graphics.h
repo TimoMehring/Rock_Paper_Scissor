@@ -22,6 +22,9 @@ struct Graphics{
     Texture2D countOne;
     Texture2D countTwo;
     Texture2D countThree;
+
+    Texture2D redWins;
+    Texture2D blueWins;
 };
 
 Graphics LoadGraphics();

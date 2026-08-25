@@ -3,7 +3,7 @@ cd /d %~dp0
 
 if not exist build mkdir build
 
-g++ -std=c++17 -Wall -Wextra -g src/main.cpp  src/gameplay.cpp src/states.cpp src/graphics.cpp -o build/game.exe -lraylib -lopengl32 -lgdi32 -lwinmm
+g++ -std=c++17 -Wall -Wextra -g src/main.cpp  src/gameplay.cpp src/states.cpp src/graphics.cpp src/audio.cpp -o build/game.exe -lraylib -lopengl32 -lgdi32 -lwinmm
 
 if %errorlevel% neq 0 (
     echo.
