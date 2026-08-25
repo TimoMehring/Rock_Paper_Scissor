@@ -39,6 +39,8 @@ int main()
     bool blueWins = false;
 
     bool redChoiceSoundPlayed = false;
+    bool playerWinSoundPlayed = false;
+    bool drawSoundPlayed = false;
 
     PlayMusicStream(audio.Theme);
 
@@ -79,15 +81,18 @@ int main()
                 if (redWins)
                 {
                     redWinCount++;
+                    PlaySound(audio.PointWin);
                     TraceLog(LOG_INFO, "Red Wins: %d", redWinCount);
                 }
                 else if (blueWins)
                 {
                     blueWinCount++;
+                    PlaySound(audio.PointWin);
                     TraceLog(LOG_INFO, "Blue Wins: %d", blueWinCount);
                 }
                 else if (isDraw)
                 {
+                    PlaySound(audio.DrawSound);
                     TraceLog(LOG_INFO, "Round is Draw");
                 }
 
@@ -111,11 +116,16 @@ int main()
                 else{
                     ResetRound(playerBluePos, playerRedPos, currentPhase);
                     redChoiceSoundPlayed = false;
+                    drawSoundPlayed = false;
                 }
             }
         }
 
         if(currentPhase == RpsPhase::PlayerRedWins || currentPhase == RpsPhase::PlayerBlueWins){
+            if(!playerWinSoundPlayed){
+                PlaySound(audio.PlayerWins);
+                playerWinSoundPlayed = true;
+            }
             if(IsKeyPressed(KEY_ENTER) || (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))){
                 currentPhase = RpsPhase::StartNewMatch;
             }
@@ -127,6 +137,8 @@ int main()
 
             resultTimer = 0;
             resultCounted = false;
+
+            playerWinSoundPlayed = false;
 
             ResetRound(playerBluePos, playerRedPos, currentPhase);
         }
@@ -163,6 +175,7 @@ int main()
     UnloadAudio(audio);
     UnloadGraphics(graphics);
 
+    CloseAudioDevice();
     CloseWindow();
 
     return 0;

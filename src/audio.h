@@ -4,6 +4,9 @@
 struct Audio{
     Music Theme;
     Sound ChoiceSound;
+    Sound PointWin;
+    Sound PlayerWins;
+    Sound DrawSound;
 
 };
 
