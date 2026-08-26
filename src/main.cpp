@@ -14,6 +14,8 @@ int main()
     RPSP2 rpsP2 = RPSP2::Rock;
 
     InitWindow(screenWidth, screenHeight, "RPS");
+    Image icon = LoadImage("assets/rpsicon.png");
+    SetWindowIcon(icon);
     InitAudioDevice();
 
     SetTargetFPS(60);
@@ -82,18 +84,18 @@ int main()
                 {
                     redWinCount++;
                     PlaySound(audio.PointWin);
-                    TraceLog(LOG_INFO, "Red Wins: %d", redWinCount);
+                    //TraceLog(LOG_INFO, "Red Wins: %d", redWinCount);
                 }
                 else if (blueWins)
                 {
                     blueWinCount++;
                     PlaySound(audio.PointWin);
-                    TraceLog(LOG_INFO, "Blue Wins: %d", blueWinCount);
+                    //TraceLog(LOG_INFO, "Blue Wins: %d", blueWinCount);
                 }
                 else if (isDraw)
                 {
                     PlaySound(audio.DrawSound);
-                    TraceLog(LOG_INFO, "Round is Draw");
+                    //TraceLog(LOG_INFO, "Round is Draw");
                 }
 
                 resultCounted = true;
@@ -165,15 +167,17 @@ int main()
         }
         if(currentPhase == RpsPhase::PlayerRedWins){
             DrawTextureEx(graphics.redWins, {220.0f,230.0f}, 0.0f, 5.0f,WHITE);
+            DrawText("Press Enter or Left-Click to Restart Match", 240, 370, 20.0, LIGHTGRAY);
         }
         else if(currentPhase == RpsPhase::PlayerBlueWins){
             DrawTextureEx(graphics.blueWins, {220.0f,230.0f}, 0.0f, 5.0f,WHITE);
+            DrawText("Press Enter or Left-Click to Restart Match", 240, 370, 20.0, LIGHTGRAY);
         }
-        //DrawTextureEx(graphics.redWins, {220.0f,230.0f}, 0.0f, 5.0f,WHITE);
         EndDrawing();
     }
     UnloadAudio(audio);
     UnloadGraphics(graphics);
+    UnloadImage(icon);
 
     CloseAudioDevice();
     CloseWindow();

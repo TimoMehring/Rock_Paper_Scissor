@@ -97,7 +97,7 @@ void DrawPlayground(Graphics& graphics){
 }
 
 void DrawCount(Graphics& graphics,int redWinCount,int blueWinCount){
-    TraceLog(LOG_INFO,"Red Count: %d | Blue Count: %d",redWinCount,blueWinCount);
+    //TraceLog(LOG_INFO,"Red Count: %d | Blue Count: %d",redWinCount,blueWinCount);
     if(redWinCount == 0){
         DrawTextureEx(graphics.countZero,{40.0f,140.0f},0.0f,7.0f,WHITE);
     }
