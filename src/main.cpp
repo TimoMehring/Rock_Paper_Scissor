@@ -45,7 +45,7 @@ int main()
     bool drawSoundPlayed = false;
 
     bool volumeMuted = false;
-    float musicVolume = 0.5f;
+    float musicVolume = 0.25f;
     SetMusicVolume(audio.Theme, musicVolume);
 
     PlayMusicStream(audio.Theme);
@@ -156,7 +156,7 @@ int main()
         ClearBackground(DARKBLUE);
         DrawPlayground(graphics);
         
-        DrawVolumeSection(graphics);
+        DrawVolumeSection(graphics, volumeMuted);
 
 
         DrawCount(graphics, redWinCount, blueWinCount);

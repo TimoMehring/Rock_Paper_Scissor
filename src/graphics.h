@@ -27,10 +27,10 @@ struct Graphics{
     Texture2D blueWins;
 
     Texture2D volumeIcon;
+    Texture2D volumeIconMuted;
 };
 
 Graphics LoadGraphics();
-//void DrawGraphics(Graphics& graphics, States currentState,PlayerRedRpsPosition& playerRedPos,PlayerBlueRpsPosition playerBluePos,RpsPhase currentPhase, RPSP1 rpsP1);
 void UnloadGraphics(Graphics& graphics);
 void DrawPlayerRedRPS(Graphics& graphics,PlayerRedRpsPosition playerRedPos,RpsPhase currentPhase,RPSP1 rpsP1);
 void DrawPlayerBlueRPS(Graphics& graphics,PlayerBlueRpsPosition playerBluePos);
@@ -38,4 +38,4 @@ void DrawGraphicsPlayerBlue(Graphics &graphics,PlayerBlueRpsPosition playerBlueP
 void DrawGraphicsPlayerRed(Graphics &graphics,PlayerRedRpsPosition &playerRedPos,RpsPhase currentPhase,RPSP1 rpsP1);
 void DrawPlayground(Graphics& graphics);
 void DrawCount(Graphics& graphics,int redWinCount,int blueWinCount);
-void DrawVolumeSection(Graphics& graphics);
+void DrawVolumeSection(Graphics& graphics, bool& volumeMuted);

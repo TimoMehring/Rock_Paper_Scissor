@@ -21,6 +21,7 @@ Graphics LoadGraphics()
     graphics.redWins = LoadTexture("assets/redwins.png");
     graphics.blueWins = LoadTexture("assets/bluewins.png");
     graphics.volumeIcon = LoadTexture("assets/volumeicon.png");
+    graphics.volumeIconMuted = LoadTexture("assets/volumeiconmuted.png");
 
     return graphics;
 }
@@ -58,6 +59,7 @@ void UnloadGraphics(Graphics &graphics)
     UnloadTexture(graphics.blueWins);
 
     UnloadTexture(graphics.volumeIcon);
+    UnloadTexture(graphics.volumeIconMuted);
 }
 
 void DrawPlayerRedRPS(Graphics &graphics, PlayerRedRpsPosition playerRedPos, RpsPhase currentPhase, RPSP1 rpsP1)
@@ -128,7 +130,11 @@ void DrawCount(Graphics& graphics,int redWinCount,int blueWinCount){
     }
 }
 
-void DrawVolumeSection(Graphics& graphics){
-    DrawTextureEx(graphics.volumeIcon, {780.0f, 35.0f}, 0.0f, 4.0f, WHITE); // 42, end at 742.x.width
-    //DrawTextureEx(graphics.volumeBar, {750.0f, 40.0f}, 0.0f, 5.0f, WHITE);
+void DrawVolumeSection(Graphics& graphics, bool& volumeMuted){
+    if(!volumeMuted){
+        DrawTextureEx(graphics.volumeIcon, {780.0f, 35.0f}, 0.0f, 4.0f, WHITE);
+    }
+    else{
+        DrawTextureEx(graphics.volumeIconMuted, {780.0f, 35.0f}, 0.0f, 4.0f, WHITE);
+    }
 }
