@@ -214,3 +214,20 @@ void ResetRound(PlayerBlueRpsPosition& playerBluePos,PlayerRedRpsPosition& playe
     // new round
     currentPhase = RpsPhase::PlayerBlueChoice;
 }
+
+void UpdateVolume(Graphics& graphics, Audio& audio, bool& volumeMuted, float musicVolume){
+    Rectangle volumeButton {780.0f, 35.0f, static_cast<float>(graphics.volumeIcon.width)*5, static_cast<float>(graphics.volumeIcon.height)*5};
+
+    Vector2 mousePosition = GetMousePosition();
+
+    if(CheckCollisionPointRec(mousePosition, volumeButton) && (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))){
+        if(!volumeMuted){
+            SetMusicVolume(audio.Theme, 0.0f);
+            volumeMuted = true;
+        }
+        else{
+            SetMusicVolume(audio.Theme, musicVolume);
+            volumeMuted = false;
+        }
+    }
+}

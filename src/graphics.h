@@ -25,6 +25,8 @@ struct Graphics{
 
     Texture2D redWins;
     Texture2D blueWins;
+
+    Texture2D volumeIcon;
 };
 
 Graphics LoadGraphics();
@@ -36,3 +38,4 @@ void DrawGraphicsPlayerBlue(Graphics &graphics,PlayerBlueRpsPosition playerBlueP
 void DrawGraphicsPlayerRed(Graphics &graphics,PlayerRedRpsPosition &playerRedPos,RpsPhase currentPhase,RPSP1 rpsP1);
 void DrawPlayground(Graphics& graphics);
 void DrawCount(Graphics& graphics,int redWinCount,int blueWinCount);
+void DrawVolumeSection(Graphics& graphics);

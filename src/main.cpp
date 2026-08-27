@@ -44,6 +44,10 @@ int main()
     bool playerWinSoundPlayed = false;
     bool drawSoundPlayed = false;
 
+    bool volumeMuted = false;
+    float musicVolume = 0.5f;
+    SetMusicVolume(audio.Theme, musicVolume);
+
     PlayMusicStream(audio.Theme);
 
     while (!WindowShouldClose())
@@ -130,6 +134,7 @@ int main()
             }
             if(IsKeyPressed(KEY_ENTER) || (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))){
                 currentPhase = RpsPhase::StartNewMatch;
+                PlaySound(audio.PlayerWins);
             }
         }
 
@@ -144,10 +149,15 @@ int main()
 
             ResetRound(playerBluePos, playerRedPos, currentPhase);
         }
+
+        UpdateVolume(graphics, audio, volumeMuted, musicVolume);
         BeginDrawing();
 
         ClearBackground(DARKBLUE);
         DrawPlayground(graphics);
+        
+        DrawVolumeSection(graphics);
+
 
         DrawCount(graphics, redWinCount, blueWinCount);
 

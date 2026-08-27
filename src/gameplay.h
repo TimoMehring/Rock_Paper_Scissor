@@ -12,3 +12,4 @@ void UpdatePlayerRedMovement(PlayerRedRpsPosition& playerRedPos,RpsPhase& curren
 void UpdateTurnPlayerRedIntoBack(PlayerRedRpsPosition& playerRedPos, RpsPhase& currentPhase);
 void UpdateRevealPlayerRed(RpsPhase& currentPhase);
 void ResetRound(PlayerBlueRpsPosition& playerBluePos,PlayerRedRpsPosition& playerRedPos,RpsPhase& currentPhase);
+void UpdateVolume(Graphics& graphics, Audio& audio, bool& volumeMuted, float musicVolume);
